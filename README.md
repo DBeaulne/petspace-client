@@ -20,8 +20,21 @@
 ## Branches
 ### Develop branch
 - develop branch created
+- changed App.js to .jsx for consistency
 - create component folders and files
 - create:
   - Header component
-    - Header.js
+    - Header.jsx
     - Header.scss
+  - Footer component
+    - Footer.jsx
+    - Footer.scss
+  - Button component
+    - Button.jsx
+    - Button.scss
+  - Card component
+    - Card.jsx
+    - Card.scss
+  - Map component
+    - Map.jsx
+    - Map.scss
