@@ -16,3 +16,12 @@
   - styles/partials
 
 - edited app title in index.html
+
+## Branches
+### Develop branch
+- develop branch created
+- create component folders and files
+- create:
+  - Header component
+    - Header.js
+    - Header.scss
