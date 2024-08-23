@@ -1,1 +1,18 @@
 /* Header styling */
+
+@use "../../styles/partials/global" as g;
+
+.header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	&__logo {
+		display: flex;
+		max-width: 12rem;
+
+		img {
+			width: 100%;
+		}
+	}
+}
