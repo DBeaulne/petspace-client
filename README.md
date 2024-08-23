@@ -38,3 +38,8 @@
   - Map component
     - Map.jsx
     - Map.scss
+
+### Home Page branch
+- code the homepage
+- add necessary routes
+- include all neccessary components
