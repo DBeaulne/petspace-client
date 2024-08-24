@@ -43,3 +43,10 @@
 - code the homepage
 - add necessary routes
 - include all neccessary components
+  - Header component complete
+    - Logo styling
+    - Hamburger menu
+      - styling for hamburger functionality
+  - Footer component complete
+    - hard coded locales
+    - styled to mockups

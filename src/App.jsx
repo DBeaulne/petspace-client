@@ -12,6 +12,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Header />
+			<Footer />
 		</BrowserRouter>
 	);
 }
