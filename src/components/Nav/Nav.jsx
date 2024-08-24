@@ -1,18 +1,37 @@
 /* Nav component */
 import "./Nav.scss";
 import Hamburger from "../Hamburger/Hamburger";
+import { useState } from "react";
 
 const Nav = () => {
+	const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+	const toggleHamburger = () => {
+		setHamburgerOpen(!hamburgerOpen);
+	};
+
 	return (
-		<div className="navigation">
-			<ul>
-				<li>Home</li>
-				<li>About</li>
-				<li>Contact us</li>
-			</ul>
-			<div className="hamburger">
-				<Hamburger />
+		<div>
+			<div className="navigation">
+				<ul>
+					<li>Home</li>
+					<li>Register</li>
+					<li>Log-in</li>
+					<li>Assistant</li>
+				</ul>
+				<div
+					className="nav-burger"
+					onClick={toggleHamburger}>
+					<Hamburger />
+				</div>
 			</div>
+			<style jsx>{`
+				@media (max-width: 767px) {
+					.navigation ul {
+						display: ${hamburgerOpen ? "inline" : "none"};
+					}
+				}
+			`}</style>
 		</div>
 	);
 };

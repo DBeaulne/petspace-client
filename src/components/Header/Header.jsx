@@ -8,12 +8,14 @@ const Header = () => {
 	return (
 		<div className="header">
 			<div className="header__logo">
-				{
-					<img
-						src={logoImg}
-						alt="PetSpace logo"
-					/>
-				}
+				<NavLink to="/">
+					{
+						<img
+							src={logoImg}
+							alt="PetSpace logo"
+						/>
+					}
+				</NavLink>
 			</div>
 			<Nav />
 		</div>

@@ -1,11 +1,11 @@
 /* Header styling */
 
-@use "../../styles/partials/global" as g;
-
 .header {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
 
 	&__logo {
 		display: flex;

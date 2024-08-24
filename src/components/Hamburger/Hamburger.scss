@@ -1,27 +1,20 @@
 /* Hamburger Menu styling */
-@use "../../styles/partials/global" as g;
+@use "../../styles/partials/colors" as clrs;
 
 .hamburger {
-	width: 2rem;
-	height: 2rem;
+	width: auto;
+	height: 4rem;
 	display: flex;
-	padding-top: 10px;
-	margin-left: 10px;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	flex-flow: column nowrap;
 	z-index: 10;
-
-	@include g.tablet {
-		display: none;
-		z-index: -10;
-	}
 }
 
 .burger {
-	width: 2rem;
-	height: 0.25rem;
-	border-radius: 10px;
-	background-color: g.$PetSpace-Black;
+	width: 60px;
+	height: 0.125rem;
+	border-radius: 1px;
+	background-color: clrs.$PetSpace-Blue;
 	transform-origin: 1px;
 	transition: all 0.3s linear;
 }
