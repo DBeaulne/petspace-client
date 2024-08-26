@@ -1,0 +1,53 @@
+/* Hero styling */
+
+@use "../../styles/partials/colors" as clrs;
+
+.hero {
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	&__overlay {
+		display: flex;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: inherit;
+		height: inherit;
+		background-color: clrs.$PetSpace-Black;
+		opacity: 30%;
+	}
+
+	&__content {
+		display: flex;
+		position: absolute;
+		align-items: center;
+		align-content: center;
+		flex-direction: column;
+		width: inherit;
+		height: inherit;
+	}
+
+	&__title,
+	&__subtitle {
+		display: flex;
+		color: clrs.$White;
+		position: absolute;
+	}
+
+	&__title {
+		top: 30%;
+		padding: 0 1rem;
+		font-size: 24px;
+	}
+
+	&__subtitle {
+		top: 75%;
+		font-size: 16px;
+	}
+}
+
+.hero-image {
+	width: 100%;
+}
