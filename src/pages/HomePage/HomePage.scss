@@ -1,2 +1,8 @@
 /* Home Page styling */
-@use "../../styles/partials/global" as g;
+@use "../../styles/partials/colors" as clrs;
+
+.homepage {
+	display: flex;
+	width: 100%;
+	height: auto;
+}

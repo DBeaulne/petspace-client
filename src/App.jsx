@@ -12,6 +12,18 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Header />
+			<main className="petspace">
+				<Routes>
+					<Route
+						path="/homepage"
+						element={<HomePage />}
+					/>
+					<Route
+						path="/"
+						element={<Navigate to="/homepage" />}
+					/>
+				</Routes>
+			</main>
 			<Footer />
 		</BrowserRouter>
 	);

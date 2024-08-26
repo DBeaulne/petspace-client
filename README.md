@@ -50,3 +50,7 @@
   - Footer component complete
     - hard coded locales
     - styled to mockups
+
+### feature/card branch
+- code and style the card component to display the services available
+- 
