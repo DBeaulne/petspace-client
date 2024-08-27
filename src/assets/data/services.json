@@ -1,0 +1,30 @@
+[
+	{
+		"id": 1,
+		"icon": "src/assets/icons/house-with-street-lamp.svg",
+		"icon_alt_text": "icon of a house with a street lamp",
+		"title": "Drop-in Visits",
+		"text": "Your sitter will drop by your home to offer food, give potty breaks or clean the litter box, as well as give them the play time they need."
+	},
+	{
+		"id": 2,
+		"icon": "src/assets/icons/house.svg",
+		"icon_alt_text": "icon of a house",
+		"title": "House sitting",
+		"text": "Your sitter will take care of your pets and your house. Your pets will remain in the comfort of their home and get all the attention they need. No stress, no anxiety."
+	},
+	{
+		"id": 3,
+		"icon": "src/assets/icons/dog-resting-on-a-pet-bed.svg",
+		"icon_alt_text": "icon of a dog asleep on a pet bed",
+		"title": "Boarding",
+		"text": "Your sitter keeps your pet overnight in their home. While you’re away, they will be treated with care and comfort, just like they’re part of the family."
+	},
+	{
+		"id": 4,
+		"icon": "src/assets/icons/dog-pawprints.svg",
+		"icon_alt_text": "icon of dog paw prings",
+		"title": "dog walking",
+		"text": "A perfect service for energetic dogs with busy owners. Your dog gets out of the house for a walk around the neighbourhood and you get piece of mind knowing they are not bored at home."
+	}
+]
