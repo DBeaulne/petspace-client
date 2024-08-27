@@ -38,3 +38,23 @@
   - Map component
     - Map.jsx
     - Map.scss
+
+### Home Page branch
+- code the homepage
+- add necessary routes
+- include all neccessary components
+  - Header component complete
+    - Logo styling
+    - Hamburger menu
+      - styling for hamburger functionality
+  - Footer component complete
+    - hard coded locales
+    - styled to mockups
+
+### feature/hero
+- code and style hero section
+
+### feature/card branch
+- code and style the card component to display the services available
+- 
+

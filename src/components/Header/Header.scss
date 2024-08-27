@@ -1,1 +1,18 @@
 /* Header styling */
+
+.header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+
+	&__logo {
+		display: flex;
+		max-width: 12rem;
+
+		img {
+			width: 100%;
+		}
+	}
+}
