@@ -51,6 +51,10 @@
     - hard coded locales
     - styled to mockups
 
+### feature/hero
+- code and style hero section
+
 ### feature/card branch
 - code and style the card component to display the services available
 - 
+

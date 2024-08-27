@@ -3,7 +3,7 @@ import "./Hero.scss";
 
 const Hero = ({ title, subtitle, src }) => {
 	return (
-		<div className="hero">
+		<section className="hero">
 			<img
 				className="hero-image"
 				src={src}
@@ -14,7 +14,7 @@ const Hero = ({ title, subtitle, src }) => {
 				<h1 className="hero__title">{title}</h1>
 				<h3 className="hero__subtitle">{subtitle}</h3>
 			</div>
-		</div>
+		</section>
 	);
 };
 export default Hero;

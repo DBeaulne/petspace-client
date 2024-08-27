@@ -21,6 +21,7 @@
 
 	&__content {
 		display: flex;
+		flex-wrap: wrap;
 		position: absolute;
 		align-items: center;
 		align-content: center;
@@ -32,13 +33,13 @@
 	&__title,
 	&__subtitle {
 		display: flex;
+		text-align: center;
 		color: clrs.$White;
 		position: absolute;
 	}
 
 	&__title {
 		top: 30%;
-		padding: 0 1rem;
 		font-size: 24px;
 	}
 
