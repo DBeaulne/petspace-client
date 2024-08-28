@@ -1,0 +1,58 @@
+/* Chat Bubble Styling */
+@use "../../styles/partials/colors" as clrs;
+
+.chat-bubble {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-width: 5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	align-items: flex-end;
+
+	&--left {
+		align-items: flex-start;
+	}
+
+	&--right {
+		align-items: flex-end;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+		align-items: flex-end;
+	}
+
+	&__name {
+		display: flex;
+		color: clrs.$PetSpace-Med-Grey-text;
+	}
+
+	&__response-box {
+		display: flex;
+		border: 1px solid clrs.$PetSpace-Blue;
+		border-radius: 8px;
+
+		&--response {
+			background-color: clrs.$PetSpace-Ice;
+		}
+
+		&--input {
+			background-color: clrs.$PetSpace-Mint;
+		}
+	}
+
+	&__text {
+		font-size: 1rem;
+		color: clrs.$PetSpace-Black;
+		font-style: italic;
+		font-weight: bold;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+		padding-left: 1.5rem;
+		padding-right: 0rem;
+		text-indent: 0.5rem;
+	}
+}

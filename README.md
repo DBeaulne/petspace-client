@@ -69,3 +69,11 @@
 ### feature/ai-assistant
 - code and style ai assistant section
 - revise button component props, logic, and styling
+
+### AI Assistant Page
+- code the Assistant page
+- add necessary route
+
+### feature/chat-bubble
+- code a re-usable chat bubble component
+- add code for differenciating between an input and response component

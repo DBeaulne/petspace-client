@@ -1,0 +1,8 @@
+/* Chat input styling */
+@use "../../styles/partials/colors" as clrs;
+
+.chat-input {
+	display: flex;
+	width: 100%;
+	background-color: clrs.$PetSpace-Mint;
+}

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Pages
 import HomePage from "./pages/HomePage/HomePage.jsx";
+import AssistantPage from "./pages/AssistantPage/AssistantPage.jsx";
 
 // Components
 import Header from "./components/Header/Header.jsx";
@@ -22,6 +23,10 @@ function App() {
 						path="/"
 						element={<Navigate to="/homepage" />}
 					/>
+          <Route
+           path="/assistant"
+           element={<AssistantPage />}
+          />
 				</Routes>
 			</main>
 			<Footer />
