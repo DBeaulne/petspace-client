@@ -69,3 +69,7 @@
 ### feature/ai-assistant
 - code and style ai assistant section
 - revise button component props, logic, and styling
+
+### AI Assistant Page
+- code the Assistant page
+- add necessary route

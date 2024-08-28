@@ -12,17 +12,15 @@
 	}
 }
 
-.button--light {
-	background-color: #f8f8f8;
-	color: #000000;
-	border: 1px solid #000000;
+.button--mint {
+	background-color: clrs.$PetSpace-Mint;
+	color: clrs.$PetSpace-Black;
 }
 
 .button--dark {
 	display: flex;
 	background-color: #121212;
 	color: #ffffff;
-	border: 1px solid #121212;
 }
 
 .button--light-grey {
