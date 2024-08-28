@@ -1,1 +1,25 @@
 /* Input Styling */
+@use "../../styles/partials/colors" as clrs;
+
+.input {
+	width: 100%;
+	border-radius: 8px;
+	padding: 0.75rem;
+	border: 1px solid clrs.$PetSpace-Black;
+	background-color: clrs.$PetSpace-LightGrey-80;
+
+	&::placeholder {
+		color: clrs.$PetSpace-Med-Grey-text;
+	}
+	&--active {
+		border: none;
+		outline: 1px solid clrs.$PetSpace-Indigo;
+	}
+	&--error {
+		border: none;
+		outline: 1px solid clrs.$FormError;
+	}
+	&--input {
+		height: 2rem;
+	}
+}

@@ -1,5 +1,4 @@
 /* Chat Bubble component */
-import ChatResponse from "../ChatResponse/ChatResponse";
 import "./ChatBubble.scss";
 
 const ChatBubble = ({ name, text, input, color }) => {
