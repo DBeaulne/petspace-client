@@ -1,0 +1,9 @@
+/* Chat Bubble Styling */
+@use "../../styles/partials/colors" as clrs;
+
+.chat-bubble {
+	display: flex;
+	width: auto;
+	max-width: 80%;
+	min-width: 5rem;
+}
