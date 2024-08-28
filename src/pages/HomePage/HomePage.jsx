@@ -3,6 +3,7 @@
 import "./HomePage.scss";
 import Hero from "../../components/Hero/Hero";
 import heroImg from "../../assets/images/chewy-gWzTum_yMCg-unsplash.jpg";
+import Services from "../../components/Services/Services";
 
 const HomePage = () => {
 	return (
@@ -12,6 +13,7 @@ const HomePage = () => {
 				subtitle="Connect with trusted sitters"
 				src={heroImg}
 			/>
+			<Services />
 		</div>
 	);
 };

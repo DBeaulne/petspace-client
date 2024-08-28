@@ -1,0 +1,10 @@
+/* Services component styling */
+@use "../../styles/partials/colors" as clrs;
+
+.services {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background-color: clrs.$PetSpace-Ice-20;
+	padding: 1.75rem 1.75rem 0 1.75rem;
+}
