@@ -68,3 +68,4 @@
 
 ### feature/ai-assistant
 - code and style ai assistant section
+- revise button component props, logic, and styling

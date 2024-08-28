@@ -12,16 +12,22 @@ const Button = ({ color, shape, borderColor, text, size, isLink, margin, to, onC
 	return isLink ? (
 		<Link
 			to={to}
-			className={className}
-			style={buttonStyle}>
-			<h4 className="button-text">{text}</h4>
+			className={className}>
+			<h4
+				className="button-text"
+				style={buttonStyle}>
+				{text}
+			</h4>
 		</Link>
 	) : (
 		<button
 			className={className}
-			style={buttonStyle}
 			onClick={onClick}>
-			<h4 className="button-text">{text}</h4>
+			<h4
+				className="button-text"
+				style={buttonStyle}>
+				{text}
+			</h4>
 		</button>
 	);
 };
