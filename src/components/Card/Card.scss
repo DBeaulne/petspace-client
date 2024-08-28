@@ -1,1 +1,36 @@
 /* Service Card Styling */
+@use "../../styles/partials/colors" as clrs;
+
+.card {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+
+	&__icon {
+		display: flex;
+		width: 3.125rem;
+		height: 3.125rem;
+		margin-right: 1.75rem;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		padding-right: 1rem;
+	}
+
+	&__service-title,
+	&__service-text {
+		line-height: 28px;
+	}
+
+	&__service-title {
+		text-transform: capitalize;
+		font-weight: 600;
+	}
+
+	&__service-text {
+		font-size: 1rem;
+		margin-bottom: 2rem;
+	}
+}

@@ -11,9 +11,10 @@ const Card = ({ icon, title, text, icon_alt_text }) => {
 					alt={icon_alt_text}
 				/>
 			</div>
-			<div className="card__content"></div>
-			<h3>{title}</h3>
-			<p>{text}</p>
+			<div className="card__content">
+				<h3 className="card__service-title">{title}</h3>
+				<p className="card__service-text">{text}</p>
+			</div>
 		</div>
 	);
 };
