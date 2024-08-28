@@ -56,5 +56,9 @@
 
 ### feature/card branch
 - code and style the card component to display the services available
-- 
+- final styling to be done with service section coding and styling
 
+### feature/service-section
+- code and style service section
+- code map() to display all services and render the appropriate icons and card content
+- final card component styling
