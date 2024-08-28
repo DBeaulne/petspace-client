@@ -65,3 +65,6 @@
 
 ### feature/button
 - code and style button component
+
+### feature/ai-assistant
+- code and style ai assistant section
