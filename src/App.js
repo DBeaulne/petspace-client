@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // Pages
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import AssistantPage from "./pages/AssistantPage/AssistantPage.jsx";
+import LogInPage from "./pages/LogInPage/LogInPage.jsx";
 
 // Components
 import Header from "./components/Header/Header.jsx";
@@ -26,6 +27,10 @@ function App() {
           <Route
            path="/assistant"
            element={<AssistantPage />}
+          />
+          <Route
+           path="/login"
+           element={<LogInPage />}
           />
 				</Routes>
 			</main>

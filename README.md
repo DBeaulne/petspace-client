@@ -77,3 +77,8 @@
 ### feature/chat-bubble
 - code a re-usable chat bubble component
 - add code for differenciating between an input and response component
+
+### page/log-in
+- create log-in page
+- code route
+- code and style rough draft of log-in page
