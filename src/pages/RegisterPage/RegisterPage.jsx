@@ -1,5 +1,5 @@
 /* Log-in Page */
-import "./Register.scss";
+import "./RegisterPage.scss";
 import { useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button/Button";
