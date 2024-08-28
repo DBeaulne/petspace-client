@@ -13,14 +13,15 @@
 }
 
 .button--mint {
+	display: flex;
 	background-color: clrs.$PetSpace-Mint;
 	color: clrs.$PetSpace-Black;
 }
 
-.button--dark {
+.button--ice {
 	display: flex;
-	background-color: #121212;
-	color: #ffffff;
+	background-color: clrs.$PetSpace-Ice;
+	color: clrs.$PetSpace-Black;
 }
 
 .button--light-grey {
@@ -50,10 +51,10 @@
 
 .button--small {
 	height: 2.5rem;
+	width: 8.5rem;
 }
 
 .button-text {
-	padding: 0 2rem;
-	font-size: 14px;
-	font-family: Arial, Helvetica, sans-serif;
+	text-transform: capitalize;
+	font-weight: bold;
 }
