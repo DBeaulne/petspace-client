@@ -1,1 +1,19 @@
 /* AI Assistant styling */
+@use "../../styles/partials/colors" as clrs;
+
+.ai-assistant {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 2rem 1rem;
+
+	&__intro-text {
+		text-align: center;
+		padding-top: 1rem;
+		padding-left: 3rem;
+		padding-bottom: 2rem;
+		padding-right: 3rem;
+		font-size: 1rem;
+		font-weight: bold;
+	}
+}
