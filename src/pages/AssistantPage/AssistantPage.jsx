@@ -19,7 +19,7 @@ const AssistantPage = () => {
 					size={"small"}
 					isLink={true}
 					margin="0"
-					to="/"
+					to="/login"
 				/>
 				<Button
 					color={"ice"}
@@ -29,7 +29,7 @@ const AssistantPage = () => {
 					size={"small"}
 					isLink={true}
 					margin="0"
-					to="/"
+					to="/register"
 				/>
 			</div>
 		</section>
