@@ -14,7 +14,7 @@ const Assistant = () => {
 				size={"large"}
 				isLink={true}
 				margin="0 2rem"
-				to="/"
+				to="/assistant"
 			/>
 		</section>
 	);
