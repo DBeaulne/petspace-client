@@ -82,3 +82,4 @@
 - create log-in page
 - code route
 - code and style rough draft of log-in page
+- updated route to navigate to log-in page from homepage
