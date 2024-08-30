@@ -66,21 +66,77 @@ const RegisterPage = () => {
 			<form
 				className="registerPage__form"
 				onSubmit={handleRegister}>
-				<div className="form-group">
-					Username:
-					<input
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.firstName ? "input input--error" : "input"}
+						placeholder={"First Name"}
+						name="firstName"
+						value={formData.firstName}
+						onChange={handleChange}
 						type="text"
-						name="username"
 					/>
 				</div>
-				<div className="form-group">
-					Password:
-					<input
-						type="password"
-						name="password"
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.lastName ? "input input--error" : "input"}
+						placeholder={"Last Name"}
+						name="lastName"
+						value={formData.lastName}
+						onChange={handleChange}
+						type="text"
 					/>
 				</div>
-				<div className="register__button-container">
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.email ? "input input--error" : "input"}
+						placeholder={"email"}
+						name="email"
+						value={formData.email}
+						onChange={handleChange}
+						type="text"
+					/>
+				</div>
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.address ? "input input--error" : "input"}
+						placeholder={"address"}
+						name="address"
+						value={formData.address}
+						onChange={handleChange}
+						type="text"
+					/>
+				</div>
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.city ? "input input--error" : "input"}
+						placeholder={"city"}
+						name="city"
+						value={formData.city}
+						onChange={handleChange}
+						type="text"
+					/>
+				</div>
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.province ? "input input--error" : "input"}
+						placeholder={"province"}
+						name="province"
+						value={formData.province}
+						onChange={handleChange}
+						type="text"
+					/>
+				</div>{" "}
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.postalCode ? "input input--error" : "input"}
+						placeholder={"postal code"}
+						name="postalCode"
+						value={formData.postalCode}
+						onChange={handleChange}
+						type="text"
+					/>
+				</div>
+				<div className="registerPage__button-container">
 					<Button
 						color={"ice"}
 						shape={"round"}

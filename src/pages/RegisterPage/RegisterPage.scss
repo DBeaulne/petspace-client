@@ -1,11 +1,27 @@
 /* Log-in Page styling */
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/forms" as forms;
 
-.log-in-page {
+.registerPage {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
 	height: auto;
 	padding: 1.5rem;
+	flex: 1;
+
+	&__form {
+		@extend .form;
+	}
+
+	&__form-group {
+		@extend .form-group;
+	}
+
+	&__button-container {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		margin-top: auto;
+	}
 }
