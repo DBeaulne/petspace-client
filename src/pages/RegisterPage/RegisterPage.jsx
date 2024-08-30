@@ -9,12 +9,38 @@ const baseUrl = "http://localhost:8085";
 const signupUrl = `${baseUrl}/signup`;
 const loginUrl = `${baseUrl}/login`;
 
-const LogInPage = () => {
-	const [isLoginError, setIsLoginError] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+const RegisterPage = () => {
+	const [formData, setFormData] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		address: "",
+		city: "",
+		province: "",
+		postalCode: ""
+	});
+
+	const [errors, setErrors] = useState({});
+	const [isRegistered, setIsRegistered] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const handleLogin = async (e) => {
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prev) => {
+			const updatedFormData = { ...prev, [name]: value };
+
+			if (errors[name]) {
+				setErrors((prev) => {
+					const updatedErrors = { ...prev };
+					delete updatedErrors[name];
+					return updatedErrors;
+				});
+			}
+			return updatedFormData;
+		});
+	};
+
+	const handleRegister = async (e) => {
 		e.preventDefault();
 
 		// Here send a POST request to loginUrl with username and password data
@@ -24,25 +50,22 @@ const LogInPage = () => {
 				password: e.target.password.value
 			});
 			console.log(response);
-			setIsLoggedIn(true);
-			setIsLoginError(false);
+			setIsRegistered(true);
 			setErrorMessage("");
 			console.log(response);
 			sessionStorage.setItem("token", response.data.token);
 			// take home, store in a cookie
 		} catch (err) {
 			console.error("error: ", err);
-			setIsLoginError(true);
 			setErrorMessage(err.message);
 		}
 	};
 
 	return (
-		<section className="register">
-			{isLoginError && <label className="error">{errorMessage}</label>}
+		<section className="registerPage">
 			<form
-				className="register__form"
-				onSubmit={handleLogin}>
+				className="registerPage__form"
+				onSubmit={handleRegister}>
 				<div className="form-group">
 					Username:
 					<input
@@ -73,4 +96,4 @@ const LogInPage = () => {
 		</section>
 	);
 };
-export default LogInPage;
+export default RegisterPage;
