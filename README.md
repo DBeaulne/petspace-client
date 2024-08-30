@@ -83,3 +83,9 @@
 - code route
 - code and style rough draft of log-in page
 - updated route to navigate to log-in page from homepage
+
+### page/register
+- create register page
+- code route to page in App.js
+- code and style rough draft of register page
+- updated route to navigate to register page from assistant page
