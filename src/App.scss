@@ -3,5 +3,12 @@
 
 .petspace {
 	display: flex;
+	height: 100%;
 	background-color: clrs.$White;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+body {
+	min-height: 100vh;
 }

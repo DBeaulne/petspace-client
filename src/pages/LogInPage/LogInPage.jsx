@@ -10,9 +10,30 @@ const signupUrl = `${baseUrl}/signup`;
 const loginUrl = `${baseUrl}/login`;
 
 const LogInPage = () => {
+	const [formData, setFormData] = useState({
+		username: "",
+		password: ""
+	});
+	const [errors, setErrors] = useState({});
 	const [isLoginError, setIsLoginError] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prev) => {
+			const updatedFormData = { ...prev, [name]: value };
+
+			if (errors[name]) {
+				setErrors((prev) => {
+					const updatedErrors = { ...prev };
+					delete updatedErrors[name];
+					return updatedErrors;
+				});
+			}
+			return updatedFormData;
+		});
+	};
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -38,26 +59,32 @@ const LogInPage = () => {
 	};
 
 	return (
-		<section className="log-in-page">
+		<section className="loginPage">
 			{isLoginError && <label className="error">{errorMessage}</label>}
 			<form
-				className="log-in__form"
-				onSubmit={handleLogin}>
-				<div className="form-group">
-					Username:
-					<input
-						type="text"
+				className="loginPage__form"
+				onSubmit={handleChange}>
+				<div className="loginPage__form-group">
+					<Input
+						classname={errors.username ? "input input--error" : "input"}
+						placeholder={"username"}
 						name="username"
+						value={formData.username}
+						onChange={handleChange}
+						type="text"
 					/>
 				</div>
-				<div className="form-group">
-					Password:
-					<input
-						type="password"
+				<div className="loginPage__form-group">
+					<Input
+						classname={errors.password ? "input input--error" : "input"}
+						placeholder={"password"}
 						name="password"
+						value={formData.password}
+						onChange={handleChange}
+						type="text"
 					/>
 				</div>
-				<div className="log-in-page__button-container">
+				<div className="loginPage__button-container">
 					<Button
 						color={"mint"}
 						shape={"round"}

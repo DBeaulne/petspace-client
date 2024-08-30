@@ -84,6 +84,8 @@
 - code and style rough draft of log-in page
 - updated route to navigate to log-in page from homepage
 - renamed branch to "page/login" - August 30, 2024
+- final edits to login page to include Input component
+- final styling of page
 
 ### page/register
 - create register page

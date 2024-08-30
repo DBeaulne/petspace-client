@@ -14,8 +14,8 @@ import Footer from "./components/Footer/Footer.jsx";
 function App() {
 	return (
 		<BrowserRouter>
-			<Header />
 			<main className="petspace">
+			<Header />
 				<Routes>
 					<Route
 						path="/homepage"
@@ -38,8 +38,8 @@ function App() {
            element={<RegisterPage />}
           />
 				</Routes>
-			</main>
 			<Footer />
+			</main>
 		</BrowserRouter>
 	);
 }

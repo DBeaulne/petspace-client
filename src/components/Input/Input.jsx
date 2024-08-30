@@ -15,17 +15,11 @@ const Input = ({ classname, placeholder, name, type, value, onChange }) => {
 		setFocus("input--active");
 	};
 
-	const onBlur = () => {
-		setFocus("");
-		setError("");
-	};
-
 	return (
 		<input
+			required
 			onInvalid={onInvalid}
 			onFocus={onFocus}
-			onBlur={onBlur}
-			required
 			value={value}
 			className={`input ${classname} ${focus} ${error}`}
 			placeholder={placeholder}
