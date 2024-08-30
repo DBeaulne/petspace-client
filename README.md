@@ -78,11 +78,12 @@
 - code a re-usable chat bubble component
 - add code for differenciating between an input and response component
 
-### page/log-in
+### page/log-in (renamed to page/login)
 - create log-in page
 - code route
 - code and style rough draft of log-in page
 - updated route to navigate to log-in page from homepage
+- renamed branch to "page/login" - August 30, 2024
 
 ### page/register
 - create register page
