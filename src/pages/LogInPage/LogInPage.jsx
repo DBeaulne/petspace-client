@@ -6,7 +6,7 @@ import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 
 const baseUrl = "http://localhost:8085";
-const signupUrl = `${baseUrl}/signup`;
+// const signupUrl = `${baseUrl}/signup`;
 const loginUrl = `${baseUrl}/login`;
 
 const LogInPage = () => {
@@ -37,24 +37,25 @@ const LogInPage = () => {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-
 		// Here send a POST request to loginUrl with username and password data
-		try {
-			const response = await axios.post(loginUrl, {
-				username: e.target.username.value,
-				password: e.target.password.value
-			});
-			console.log(response);
-			setIsLoggedIn(true);
-			setIsLoginError(false);
-			setErrorMessage("");
-			console.log(response);
-			sessionStorage.setItem("token", response.data.token);
-			// take home, store in a cookie
-		} catch (err) {
-			console.error("error: ", err);
-			setIsLoginError(true);
-			setErrorMessage(err.message);
+		if (!isLoggedIn) {
+			try {
+				const response = await axios.post(loginUrl, {
+					username: e.target.username.value,
+					password: e.target.password.value
+				});
+				console.log(response);
+				setIsLoggedIn(true);
+				setIsLoginError(false);
+				setErrorMessage("");
+				console.log(response);
+				sessionStorage.setItem("token", response.data.token);
+				// take home, store in a cookie
+			} catch (err) {
+				console.error("error: ", err);
+				setIsLoginError(true);
+				setErrorMessage(err.message);
+			}
 		}
 	};
 
@@ -84,16 +85,17 @@ const LogInPage = () => {
 						type="text"
 					/>
 				</div>
-				<div className="loginPage__button-container">
+				<div
+					className="loginPage__button-container"
+					onClick={handleLogin}>
 					<Button
 						color={"mint"}
 						shape={"round"}
 						borderColor={"black"}
 						text="log in"
 						size={"small"}
-						isLink={true}
+						isLink={false}
 						margin="0"
-						to="/"
 					/>
 				</div>
 			</form>

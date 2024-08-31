@@ -6,7 +6,7 @@ import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 
 const baseUrl = "http://localhost:8085";
-const signupUrl = `${baseUrl}/signup`;
+// const signupUrl = `${baseUrl}/signup`;
 const loginUrl = `${baseUrl}/login`;
 
 const RegisterPage = () => {
@@ -21,8 +21,30 @@ const RegisterPage = () => {
 	});
 
 	const [errors, setErrors] = useState({});
-	const [isRegistered, setIsRegistered] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
+
+	const validateForm = () => {
+		const newErrors = {};
+
+		Object.keys(formData).forEach((key) => {
+			if (!formData[key]) {
+				newErrors[key] = "This field is required.";
+			}
+			if (formData[key] && key === "contact_email") {
+				const isValidEmail = validateEmail(formData.contact_email);
+				if (!isValidEmail) {
+					newErrors[key] = "Invalid email";
+				}
+			}
+		});
+		setErrors(newErrors);
+		return Object.keys(newErrors).length === 0;
+	};
+
+	const validateEmail = (email) => {
+		const emailRegex =
+			/^(([^<>(/){}[\]\\+-_~!#$%^&*?'=.,;:\s@"]+(\.[^<>(/){}[\]\\!#$%^+&*'?~`=\-_.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,12}))$/;
+		return email.match(emailRegex);
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -42,6 +64,9 @@ const RegisterPage = () => {
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
+		if (!validateForm()) {
+			return;
+		}
 
 		// Here send a POST request to loginUrl with username and password data
 		try {
@@ -50,14 +75,11 @@ const RegisterPage = () => {
 				password: e.target.password.value
 			});
 			console.log(response);
-			setIsRegistered(true);
-			setErrorMessage("");
 			console.log(response);
 			sessionStorage.setItem("token", response.data.token);
 			// take home, store in a cookie
 		} catch (err) {
 			console.error("error: ", err);
-			setErrorMessage(err.message);
 		}
 	};
 
