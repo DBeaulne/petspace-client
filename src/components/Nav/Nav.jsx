@@ -26,7 +26,7 @@ const Nav = () => {
 				</div>
 			</div>
 			<style jsx>{`
-				@media (max-width: 767px) {
+				@media (max-width: 2000px) {
 					.navigation ul {
 						display: ${hamburgerOpen ? "inline" : "none"};
 					}
