@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
+import errorIcon from "../../assets/icons/error-24px.svg";
 
 const baseUrl = "http://localhost:8085";
 // const signupUrl = `${baseUrl}/signup`;
@@ -97,6 +98,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.firstName && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.firstName}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -107,6 +118,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.lastName && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.lastName}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -117,6 +138,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.email && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.email}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -127,6 +158,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.address && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.address}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -137,6 +178,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.city && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.city}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -147,6 +198,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.province && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.province}</p>
+						</div>
+					)}
 				</div>{" "}
 				<div className="registerPage__form-group">
 					<Input
@@ -157,6 +218,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.postalCode && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.postalCode}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__button-container">
 					<Button
