@@ -29,8 +29,8 @@ const RegisterPage = () => {
 			if (!formData[key]) {
 				newErrors[key] = "This field is required.";
 			}
-			if (formData[key] && key === "contact_email") {
-				const isValidEmail = validateEmail(formData.contact_email);
+			if (formData[key] && key === "email") {
+				const isValidEmail = validateEmail(formData.email);
 				if (!isValidEmail) {
 					newErrors[key] = "Invalid email";
 				}
@@ -41,9 +41,8 @@ const RegisterPage = () => {
 	};
 
 	const validateEmail = (email) => {
-		const emailRegex =
-			/^(([^<>(/){}[\]\\+-_~!#$%^&*?'=.,;:\s@"]+(\.[^<>(/){}[\]\\!#$%^+&*'?~`=\-_.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,12}))$/;
-		return email.match(emailRegex);
+		const emailRegex = /[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]+/i;
+		return emailRegex.test(email);
 	};
 
 	const handleChange = (e) => {

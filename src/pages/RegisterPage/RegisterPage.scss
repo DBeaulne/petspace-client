@@ -16,9 +16,8 @@
 	}
 
 	&__form-group {
-		display: flex;
-		flex-direction: column;
 		@extend .form-group;
+		flex-direction: column;
 	}
 
 	&__button-container {
