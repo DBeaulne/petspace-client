@@ -8,10 +8,6 @@ import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
 import { apiUrl } from "../../App";
 
-const baseUrl = "http://localhost:8085";
-// const signupUrl = `${baseUrl}/signup`;
-const loginUrl = `${baseUrl}/login`;
-
 const RegisterPage = () => {
 	const [formData, setFormData] = useState({
 		firstName: "",
@@ -75,7 +71,7 @@ const RegisterPage = () => {
 		try {
 			const registerAcct = await axios.post(`${apiUrl}/accounts`, formData);
 			console.log(registerAcct);
-			navigate(`/results`);
+			navigate("/login");
 		} catch (err) {
 			console.log("Failed to add user", err);
 		}
