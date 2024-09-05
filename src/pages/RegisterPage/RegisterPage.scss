@@ -16,6 +16,8 @@
 	}
 
 	&__form-group {
+		display: flex;
+		flex-direction: column;
 		@extend .form-group;
 	}
 
@@ -23,5 +25,20 @@
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 		margin-top: auto;
+	}
+}
+.error {
+	display: flex;
+	flex-direction: row;
+	gap: 0.25rem;
+	padding-top: 0.25rem;
+	align-items: center;
+
+	&__icon {
+		width: 1rem;
+	}
+
+	&__txt {
+		font-size: 0.75rem;
 	}
 }
