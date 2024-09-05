@@ -7,7 +7,6 @@ import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
 // import * as Utils from "../../utils/utils";
 import { apiUrl } from "../../App";
-import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 
 const LogInPage = () => {
 	const [formData, setFormData] = useState({

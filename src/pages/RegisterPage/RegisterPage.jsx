@@ -16,7 +16,9 @@ const RegisterPage = () => {
 		address: "",
 		city: "",
 		province: "",
-		postalCode: ""
+		postalCode: "",
+		password: "",
+		confirmPassword: ""
 	});
 
 	const [errors, setErrors] = useState({});
@@ -36,6 +38,12 @@ const RegisterPage = () => {
 				}
 			}
 		});
+
+		// Password and confirm password validation
+		if (formData.password !== formData.confirmPassword) {
+			newErrors.confirmPassword = "Passwords do not match";
+		}
+
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
 	};
@@ -200,7 +208,7 @@ const RegisterPage = () => {
 							<p className="error__txt">{errors.province}</p>
 						</div>
 					)}
-				</div>{" "}
+				</div>
 				<div className="registerPage__form-group">
 					<Input
 						classname={errors.postalCode ? "input input--error" : "input"}
@@ -218,6 +226,46 @@ const RegisterPage = () => {
 								alt="error-icon"
 							/>
 							<p className="error__txt">{errors.postalCode}</p>
+						</div>
+					)}
+				</div>
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.password ? "input input--error" : "input"}
+						placeholder={"password"}
+						name="password"
+						value={formData.password}
+						onChange={handleChange}
+						type="text"
+					/>
+					{errors.password && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.password}</p>
+						</div>
+					)}
+				</div>
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.confirmPassword ? "input input--error" : "input"}
+						placeholder={"confirm password"}
+						name="confirmPassword"
+						value={formData.confirmPassword}
+						onChange={handleChange}
+						type="text"
+					/>
+					{errors.confirmPassword && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.confirmPassword}</p>
 						</div>
 					)}
 				</div>
