@@ -1,10 +1,12 @@
 /* Log-in Page */
 import "./RegisterPage.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
+import { apiUrl } from "../../App";
 
 const baseUrl = "http://localhost:8085";
 // const signupUrl = `${baseUrl}/signup`;
@@ -22,6 +24,7 @@ const RegisterPage = () => {
 	});
 
 	const [errors, setErrors] = useState({});
+	const navigate = useNavigate();
 
 	const validateForm = () => {
 		const newErrors = {};
@@ -69,18 +72,12 @@ const RegisterPage = () => {
 			return;
 		}
 
-		// Here send a POST request to loginUrl with username and password data
 		try {
-			const response = await axios.post(loginUrl, {
-				username: e.target.username.value,
-				password: e.target.password.value
-			});
-			console.log(response);
-			console.log(response);
-			sessionStorage.setItem("token", response.data.token);
-			// take home, store in a cookie
+			const registerAcct = await axios.post(`${apiUrl}/accounts`, formData);
+			console.log(registerAcct);
+			navigate(`/results`);
 		} catch (err) {
-			console.error("error: ", err);
+			console.log("Failed to add user", err);
 		}
 	};
 
@@ -236,9 +233,10 @@ const RegisterPage = () => {
 						borderColor={"black"}
 						text="register"
 						size={"small"}
-						isLink={true}
 						margin="0"
-						to="/"
+						isLink={false}
+						type="submit"
+						onClick={handleRegister}
 					/>
 				</div>
 			</form>

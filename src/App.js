@@ -6,10 +6,14 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import AssistantPage from "./pages/AssistantPage/AssistantPage.jsx";
 import LogInPage from "./pages/LogInPage/LogInPage.jsx";
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
+import ResultsPage from './pages/ResultsPage/ResultsPage.jsx';
 
 // Components
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+
+export const apiUrl = process.env.REACT_APP_API_BASE_URL;
+
 
 function App() {
 	return (
@@ -36,6 +40,10 @@ function App() {
           <Route
            path="/register"
            element={<RegisterPage />}
+          />
+          <Route
+           path="/results"
+           element={<ResultsPage />}
           />
 				</Routes>
 			<Footer />

@@ -5,7 +5,7 @@ import servicesData from "../../assets/data/services.json";
 
 const Services = () => {
 	return (
-		<serction className="services">
+		<section className="services">
 			{servicesData.map((services, index) => (
 				<Card
 					key={index}
@@ -15,7 +15,7 @@ const Services = () => {
 					icon_alt_text={services.icon_alt_text}
 				/>
 			))}
-		</serction>
+		</section>
 	);
 };
 export default Services;
