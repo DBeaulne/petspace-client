@@ -1,13 +1,12 @@
 /* Log-in Page */
 import "./RegisterPage.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
-
-const baseUrl = "http://localhost:8085";
-// const signupUrl = `${baseUrl}/signup`;
-const loginUrl = `${baseUrl}/login`;
+import errorIcon from "../../assets/icons/error-24px.svg";
+import { apiUrl } from "../../App";
 
 const RegisterPage = () => {
 	const [formData, setFormData] = useState({
@@ -17,10 +16,13 @@ const RegisterPage = () => {
 		address: "",
 		city: "",
 		province: "",
-		postalCode: ""
+		postalCode: "",
+		password: "",
+		confirmPassword: ""
 	});
 
 	const [errors, setErrors] = useState({});
+	const navigate = useNavigate();
 
 	const validateForm = () => {
 		const newErrors = {};
@@ -29,21 +31,26 @@ const RegisterPage = () => {
 			if (!formData[key]) {
 				newErrors[key] = "This field is required.";
 			}
-			if (formData[key] && key === "contact_email") {
-				const isValidEmail = validateEmail(formData.contact_email);
+			if (formData[key] && key === "email") {
+				const isValidEmail = validateEmail(formData.email);
 				if (!isValidEmail) {
 					newErrors[key] = "Invalid email";
 				}
 			}
 		});
+
+		// Password and confirm password validation
+		if (formData.password !== formData.confirmPassword) {
+			newErrors.confirmPassword = "Passwords do not match";
+		}
+
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
 	};
 
 	const validateEmail = (email) => {
-		const emailRegex =
-			/^(([^<>(/){}[\]\\+-_~!#$%^&*?'=.,;:\s@"]+(\.[^<>(/){}[\]\\!#$%^+&*'?~`=\-_.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,12}))$/;
-		return email.match(emailRegex);
+		const emailRegex = /[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]+/i;
+		return emailRegex.test(email);
 	};
 
 	const handleChange = (e) => {
@@ -68,18 +75,12 @@ const RegisterPage = () => {
 			return;
 		}
 
-		// Here send a POST request to loginUrl with username and password data
 		try {
-			const response = await axios.post(loginUrl, {
-				username: e.target.username.value,
-				password: e.target.password.value
-			});
-			console.log(response);
-			console.log(response);
-			sessionStorage.setItem("token", response.data.token);
-			// take home, store in a cookie
+			const registerAcct = await axios.post(`${apiUrl}/accounts`, formData);
+			console.log(registerAcct);
+			navigate("/login");
 		} catch (err) {
-			console.error("error: ", err);
+			console.log("Failed to add user", err);
 		}
 	};
 
@@ -97,6 +98,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.firstName && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.firstName}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -107,6 +118,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.lastName && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.lastName}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -117,6 +138,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.email && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.email}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -127,6 +158,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.address && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.address}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -137,6 +178,16 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.city && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.city}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -147,7 +198,17 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
-				</div>{" "}
+					{errors.province && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.province}</p>
+						</div>
+					)}
+				</div>
 				<div className="registerPage__form-group">
 					<Input
 						classname={errors.postalCode ? "input input--error" : "input"}
@@ -157,6 +218,56 @@ const RegisterPage = () => {
 						onChange={handleChange}
 						type="text"
 					/>
+					{errors.postalCode && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.postalCode}</p>
+						</div>
+					)}
+				</div>
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.password ? "input input--error" : "input"}
+						placeholder={"password"}
+						name="password"
+						value={formData.password}
+						onChange={handleChange}
+						type="text"
+					/>
+					{errors.password && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.password}</p>
+						</div>
+					)}
+				</div>
+				<div className="registerPage__form-group">
+					<Input
+						classname={errors.confirmPassword ? "input input--error" : "input"}
+						placeholder={"confirm password"}
+						name="confirmPassword"
+						value={formData.confirmPassword}
+						onChange={handleChange}
+						type="text"
+					/>
+					{errors.confirmPassword && (
+						<div className="error">
+							<img
+								className="error__icon"
+								src={errorIcon}
+								alt="error-icon"
+							/>
+							<p className="error__txt">{errors.confirmPassword}</p>
+						</div>
+					)}
 				</div>
 				<div className="registerPage__button-container">
 					<Button
@@ -165,9 +276,10 @@ const RegisterPage = () => {
 						borderColor={"black"}
 						text="register"
 						size={"small"}
-						isLink={true}
 						margin="0"
-						to="/"
+						isLink={false}
+						type="submit"
+						onClick={handleRegister}
 					/>
 				</div>
 			</form>

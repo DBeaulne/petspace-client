@@ -2,7 +2,19 @@
 import { Link } from "react-router-dom";
 import "./Button.scss";
 
-const Button = ({ color, shape, borderColor, text, size, isLink, margin, textPadding, to, onClick }) => {
+const Button = ({
+	color,
+	shape,
+	borderColor,
+	text,
+	size,
+	isLink,
+	margin,
+	textPadding,
+	type,
+	to = null,
+	onClick = null
+}) => {
 	const className = `button--${color} button--${shape} button--${size} button-brdr--${borderColor} button-wrapper`;
 
 	const buttonStyle = {
@@ -26,6 +38,7 @@ const Button = ({ color, shape, borderColor, text, size, isLink, margin, textPad
 		</Link>
 	) : (
 		<button
+			type={type}
 			className={className}
 			style={buttonStyle}
 			onClick={onClick}>

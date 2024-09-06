@@ -1,0 +1,9 @@
+/* Results page styling */
+@use "../../styles/partials/colors" as clrs;
+
+.results-page {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: auto;
+}

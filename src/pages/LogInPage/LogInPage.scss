@@ -17,6 +17,7 @@
 
 	&__form-group {
 		@extend .form-group;
+		flex-direction: column;
 	}
 
 	&__button-container {

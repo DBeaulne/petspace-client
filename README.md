@@ -86,9 +86,13 @@
 - renamed branch to "page/login" - August 30, 2024
 - final edits to login page to include Input component
 - final styling of page
+- edits to validateEmail() regex for emails was too complex to pass valid emails
 
 ### page/register
 - create register page
 - code route to page in App.js
 - code and style rough draft of register page
 - updated route to navigate to register page from assistant page
+- updated route to navigate to login page after successful registration
+- edits to validateEmail() regex for emails was too complex to pass valid emails
+- add password and confirm password input field

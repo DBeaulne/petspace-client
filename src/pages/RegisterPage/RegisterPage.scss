@@ -17,11 +17,27 @@
 
 	&__form-group {
 		@extend .form-group;
+		flex-direction: column;
 	}
 
 	&__button-container {
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 		margin-top: auto;
+	}
+}
+.error {
+	display: flex;
+	flex-direction: row;
+	gap: 0.25rem;
+	padding-top: 0.25rem;
+	align-items: center;
+
+	&__icon {
+		width: 1rem;
+	}
+
+	&__txt {
+		font-size: 0.75rem;
 	}
 }

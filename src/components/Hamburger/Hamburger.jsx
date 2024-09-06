@@ -10,7 +10,7 @@ const Hamburger = ({ isOpen }) => {
 				<div className="burger burger3" />
 			</div>
 
-			<style jsx>{`
+			<style>{`
 				.burger1 {
 					transform: ${isOpen ? "rotate(45deg)" : "rotate(0)"};
 				}
