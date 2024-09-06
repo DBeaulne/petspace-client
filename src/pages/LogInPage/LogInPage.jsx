@@ -61,7 +61,7 @@ const LogInPage = () => {
 
 	const setRefreshTokenCookie = (refreshToken) => {
 		Cookies.set("refreshToken", refreshToken, {
-			expires: 7 // set expiration to 7 days
+			expires: 69 // set expiration to 7 days
 		});
 	};
 
