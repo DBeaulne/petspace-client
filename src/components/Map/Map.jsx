@@ -1,7 +1,6 @@
 /* Map component */
 import "./Map.scss";
-import MapImage from "../../assets/images/map.png";
-import MapImage_2 from "../../assets/images/map-2.png";
+import MapImage from "../../assets/images/map-2.png";
 
 const Map = () => {
 	return (
@@ -10,7 +9,7 @@ const Map = () => {
 			id="map">
 			<img
 				className="mapImage"
-				src={MapImage_2}
+				src={MapImage}
 				alt="map overview of Courtice, Ontario"
 			/>
 		</div>

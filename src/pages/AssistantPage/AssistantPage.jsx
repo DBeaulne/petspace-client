@@ -1,15 +1,18 @@
 /* AI Assistant Page */
 import "./AssistantPage.scss";
 import Button from "../../components/Button/Button";
-import ChatBubble from "../../components/ChatBubble/ChatBubble";
+import ChatExample from "../../assets/images/assistantChat.png";
 
 const AssistantPage = () => {
 	return (
 		<section className="assistant">
-			<ChatBubble
-				name={"Max"}
-				text={"Hello! Welcome to PetSpace. Are you looking for a sitter to care for your pet?"}
-			/>
+			<div className="assistant__img-wrapper">
+				<img
+					className="assistant__chat-image"
+					src={ChatExample}
+					alt="example of what the chat could look like with Max, our assistant chatbot"
+				/>
+			</div>
 			<div className="assistant__button-container">
 				<Button
 					color={"mint"}
