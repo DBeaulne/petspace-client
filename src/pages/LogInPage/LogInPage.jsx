@@ -1,12 +1,13 @@
 /* Log-in Page */
 import "./LogInPage.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
-// import * as Utils from "../../utils/utils";
 import { apiUrl } from "../../App";
+import Cookies from "js-cookie";
 
 const LogInPage = () => {
 	const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const LogInPage = () => {
 	const [isLoginError, setIsLoginError] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const navigate = useNavigate();
 
 	const validateForm = () => {
 		const newErrors = {};
@@ -57,6 +59,12 @@ const LogInPage = () => {
 		});
 	};
 
+	const setRefreshTokenCookie = (refreshToken) => {
+		Cookies.set("refreshToken", refreshToken, {
+			expires: 7 // set expiration to 7 days
+		});
+	};
+
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		if (!validateForm()) {
@@ -64,25 +72,21 @@ const LogInPage = () => {
 		}
 
 		// Here send a POST request to loginUrl with username and password data
-		/* if (!isLoggedIn) {
+		if (!isLoggedIn) {
 			try {
-				const response = await axios.post(`${apiUrl}`, {
-					username: e.target.username.value,
-					password: e.target.password.value
-				});
-				console.log(response);
+				const response = await axios.post(`${apiUrl}/login`, formData);
 				setIsLoggedIn(true);
 				setIsLoginError(false);
 				setErrorMessage("");
-				console.log(response);
-				sessionStorage.setItem("token", response.data.token);
-				// take home, store in a cookie
+				sessionStorage.setItem("token", response.data.accessToken);
+				setRefreshTokenCookie(response.data.refreshToken);
+				navigate("/results");
 			} catch (err) {
 				console.error("error: ", err);
 				setIsLoginError(true);
 				setErrorMessage(err.message);
 			}
-		} */
+		}
 	};
 
 	return (
