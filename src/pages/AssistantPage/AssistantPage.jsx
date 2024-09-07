@@ -15,14 +15,14 @@ const AssistantPage = () => {
 
 	return (
 		<section className="assistant">
-			{/* 			<div className="assistant__img-wrapper">
+			<div className="assistant__img-wrapper">
 				<img
 					className="assistant__chat-image"
 					src={ChatExample}
 					alt="example of what the chat could look like with Max, our assistant chatbot"
 				/>
-			</div> */}
-			<ChatAssistant onSearch={handleSearch} />
+			</div>
+			{/* <ChatAssistant onSearch={handleSearch} /> */}
 			<div className="assistant__button-container">
 				<Button
 					color={"mint"}
