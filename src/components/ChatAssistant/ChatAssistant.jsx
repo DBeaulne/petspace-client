@@ -79,7 +79,7 @@ const ChatAssistant = ({ onSearch }) => {
 				))}
 			</div>
 			<div className="input-section">
-				<input
+				<textarea
 					type="text"
 					value={userInput}
 					onChange={handleInputChange}
