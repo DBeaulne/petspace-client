@@ -86,7 +86,7 @@ const ChatAssistant = ({ onSearch }) => {
 					placeholder="Hello! Welcome to PetSpace. Are you looking for a sitter to care for your pet?"
 				/>
 				<button onClick={handleSendMessage}>Send</button>
-				<button onClick={getUserLocation}>Get My Location</button> {/* Button to trigger geolocation */}
+				{/* <button onClick={getUserLocation}>Get My Location</button> */} {/* Button to trigger geolocation */}
 			</div>
 		</div>
 	);
