@@ -2,7 +2,7 @@
 import "./Input.scss";
 import { useState } from "react";
 
-const Input = ({ classname, placeholder, name, type, value, onChange }) => {
+const Input = ({ classname, placeholder, name, number, txtArea, type, value, onChange }) => {
 	const [focus, setFocus] = useState("");
 	const [error, setError] = useState("");
 
@@ -25,20 +25,52 @@ const Input = ({ classname, placeholder, name, type, value, onChange }) => {
 		setError("");
 	};
 
-	return (
-		<input
-			required
-			onInvalid={onInvalid}
-			onFocus={onFocus}
-			onBlur={onBlur}
-			value={value}
-			className={`input ${classname} ${focus} ${error}`}
-			placeholder={placeholder}
-			type={type}
-			name={name}
-			onChange={onChange}
-		/>
-	);
+	if (txtArea) {
+		return (
+			<textarea
+				onInvalid={onInvalid}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				required
+				value={value}
+				className={`input input--txtArea ${classname} ${focus} ${error}`}
+				placeholder={placeholder}
+				type="text"
+				name={name}
+				onChange={onChange}
+			/>
+		);
+	} else if (number) {
+		return (
+			<input
+				onInvalid={onInvalid}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				value={value}
+				className={`input ${classname} ${focus} ${error}`}
+				placeholder={placeholder}
+				type="number"
+				name={name}
+				min="0"
+				onChange={onChange}
+			/>
+		);
+	} else {
+		return (
+			<input
+				required
+				onInvalid={onInvalid}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				value={value}
+				className={`input ${classname} ${focus} ${error}`}
+				placeholder={placeholder}
+				type={type}
+				name={name}
+				onChange={onChange}
+			/>
+		);
+	}
 };
 
 export default Input;

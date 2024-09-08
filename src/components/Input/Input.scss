@@ -12,10 +12,18 @@
 	&::placeholder {
 		color: clrs.$PetSpace-Med-Grey-text;
 	}
+
+	&--txtArea {
+		resize: none;
+		max-height: 122px;
+		height: 8rem;
+	}
+
 	&--active {
 		border: none;
 		outline: 1px solid clrs.$PetSpace-Indigo;
 	}
+
 	&--error {
 		border: none;
 		outline: 1px solid clrs.$FormError;

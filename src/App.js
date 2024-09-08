@@ -7,6 +7,7 @@ import AssistantPage from "./pages/AssistantPage/AssistantPage.jsx";
 import LogInPage from "./pages/LogInPage/LogInPage.jsx";
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 import ResultsPage from './pages/ResultsPage/ResultsPage.jsx';
+import PetDetails from './pages/PetDetails/PetDetails.jsx';
 
 // Components
 import Header from "./components/Header/Header.jsx";
@@ -44,6 +45,10 @@ function App() {
           <Route
            path="/results"
            element={<ResultsPage />}
+          />
+          <Route
+            path="/petDetails"
+            element={<PetDetails />}
           />
 				</Routes>
 			<Footer />

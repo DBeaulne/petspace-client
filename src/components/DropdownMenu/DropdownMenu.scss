@@ -1,0 +1,20 @@
+/* Dropdown menu styling */
+@use "../../styles/partials/colors" as clrs;
+
+.dropdown {
+	display: flex;
+
+	&__menu {
+		width: 100%;
+		height: 2rem;
+		padding: unset;
+		border-radius: 8px;
+		border: 1px solid clrs.$PetSpace-Blue;
+		background-color: clrs.$PetSpace-LightGrey-80;
+
+		&:focus-visible {
+			outline-color: clrs.$PetSpace-Blue;
+			outline-width: 1px;
+		}
+	}
+}

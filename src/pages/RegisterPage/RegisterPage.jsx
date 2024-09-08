@@ -76,9 +76,9 @@ const RegisterPage = () => {
 		}
 
 		try {
-			const registerAcct = await axios.post(`${apiUrl}/accounts`, formData);
-			console.log(registerAcct);
-			navigate("/login");
+			await axios.post(`${apiUrl}/accounts`, formData).then(() => {
+				navigate("/petDetails");
+			});
 		} catch (err) {
 			console.log("Failed to add user", err);
 		}
@@ -189,45 +189,47 @@ const RegisterPage = () => {
 						</div>
 					)}
 				</div>
-				<div className="registerPage__form-group">
-					<Input
-						classname={errors.province ? "input input--error" : "input"}
-						placeholder={"province"}
-						name="province"
-						value={formData.province}
-						onChange={handleChange}
-						type="text"
-					/>
-					{errors.province && (
-						<div className="error">
-							<img
-								className="error__icon"
-								src={errorIcon}
-								alt="error-icon"
-							/>
-							<p className="error__txt">{errors.province}</p>
-						</div>
-					)}
-				</div>
-				<div className="registerPage__form-group">
-					<Input
-						classname={errors.postalCode ? "input input--error" : "input"}
-						placeholder={"postal code"}
-						name="postalCode"
-						value={formData.postalCode}
-						onChange={handleChange}
-						type="text"
-					/>
-					{errors.postalCode && (
-						<div className="error">
-							<img
-								className="error__icon"
-								src={errorIcon}
-								alt="error-icon"
-							/>
-							<p className="error__txt">{errors.postalCode}</p>
-						</div>
-					)}
+				<div className="registerPage__ppc-wrapper">
+					<div className="registerPage__form-group registerPage__form-group--dbl-col">
+						<Input
+							classname={errors.province ? "input input--error" : "input"}
+							placeholder={"province"}
+							name="province"
+							value={formData.province}
+							onChange={handleChange}
+							type="text"
+						/>
+						{errors.province && (
+							<div className="error">
+								<img
+									className="error__icon"
+									src={errorIcon}
+									alt="error-icon"
+								/>
+								<p className="error__txt">{errors.province}</p>
+							</div>
+						)}
+					</div>
+					<div className="registerPage__form-group registerPage__form-group--ppc-group">
+						<Input
+							classname={errors.postalCode ? "input input--error" : "input"}
+							placeholder={"postal code"}
+							name="postalCode"
+							value={formData.postalCode}
+							onChange={handleChange}
+							type="text"
+						/>
+						{errors.postalCode && (
+							<div className="error">
+								<img
+									className="error__icon"
+									src={errorIcon}
+									alt="error-icon"
+								/>
+								<p className="error__txt">{errors.postalCode}</p>
+							</div>
+						)}
+					</div>
 				</div>
 				<div className="registerPage__form-group">
 					<Input
@@ -236,7 +238,7 @@ const RegisterPage = () => {
 						name="password"
 						value={formData.password}
 						onChange={handleChange}
-						type="text"
+						type="password"
 					/>
 					{errors.password && (
 						<div className="error">
@@ -256,7 +258,7 @@ const RegisterPage = () => {
 						name="confirmPassword"
 						value={formData.confirmPassword}
 						onChange={handleChange}
-						type="text"
+						type="password"
 					/>
 					{errors.confirmPassword && (
 						<div className="error">
