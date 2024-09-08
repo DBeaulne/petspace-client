@@ -210,7 +210,7 @@ const RegisterPage = () => {
 							</div>
 						)}
 					</div>
-					<div className="registerPage__form-group registerPage__form-group--ppc-group">
+					<div className="registerPage__form-group registerPage__form-group--dbl-col">
 						<Input
 							classname={errors.postalCode ? "input input--error" : "input"}
 							placeholder={"postal code"}

@@ -122,7 +122,7 @@ const LogInPage = () => {
 						name="password"
 						value={formData.password}
 						onChange={handleChange}
-						type="text"
+						type="password"
 					/>
 					{errors.password && (
 						<div className="error">

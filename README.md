@@ -1,21 +1,10 @@
 # Petspace Client App
 
-- run create-react-app
-- initial commit
-- added neccessary project dependencies
-  - sass
-  - react
-  - react-router-dom
-  - react-dom
-  - axios
-
-- created initial folder structure and included placeholder files
-  - assets
-  - components
-  - pages
-  - styles/partials
-
-- edited app title in index.html
+## Setup
+1.  `$ git clone git@github.com:DBeaulne/petspace-client.git`
+2.  `$ cd petspace-client`
+3.  `$ npm install`
+4.  Make a copy of the .env.sample file. Renane it to .env and add the variables required
 
 ## Branches
 ### Develop branch

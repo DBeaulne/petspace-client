@@ -1,36 +1,31 @@
 /** Dropdown Menu component */
 import "./DropdownMenu.scss";
 
+import "./DropdownMenu.scss";
+
 const Dropdown = ({
-	classname,
-	focus,
-	error,
-	defaultTxt,
-	option1,
-	option2,
-	option3,
-	option4,
-	option5,
-	name,
-	onChange
+	classname = "", // Default to empty string if not provided
+	focus = "",
+	error = "",
+	defaultTxt = "Select", // Default placeholder text
+	options = [],
+	name = "",
+	onChange = () => {} // Default to an empty function if not provided
 }) => {
-	const options = [
-		{ value: defaultTxt, label: defaultTxt },
-		{ value: option1, label: option1 },
-		{ value: option2, label: option2 },
-		{ value: option3, label: option3 },
-		{ value: option4, label: option4 },
-		{ value: option5, label: option5 }
+	const dropdownOptions = [
+		{ value: defaultTxt, label: defaultTxt }, // The default placeholder option
+		...options // Spread the array of options
 	];
+
 	return (
 		<div className="dropdown">
 			<select
 				className={`dropdown__menu ${classname} ${focus} ${error}`}
 				name={name}
 				onChange={onChange}>
-				{options.map((option) => (
+				{dropdownOptions.map((option, index) => (
 					<option
-						key={option.value}
+						key={`${option.value}-${index}`}
 						value={option.value}>
 						{option.label}
 					</option>
@@ -39,4 +34,5 @@ const Dropdown = ({
 		</div>
 	);
 };
+
 export default Dropdown;

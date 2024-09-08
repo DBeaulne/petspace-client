@@ -40,12 +40,12 @@ const PetDetails = () => {
 				formData.petType = "";
 				newErrors[key] = "This field is required.";
 			}
-			if (formData[key] && key === "size" && formData.petType === "Pet Size") {
-				formData.petType = "";
+			if (formData[key] && key === "size" && formData.size === "Pet Size") {
+				formData.size = "";
 				newErrors[key] = "This field is required.";
 			}
-			if (formData[key] && key === "temperament" && formData.petType === "Temperament") {
-				formData.petType = "";
+			if (formData[key] && key === "temperament" && formData.temperament === "Temperament") {
+				formData.temperament = "";
 				newErrors[key] = "This field is required.";
 			}
 		});
@@ -76,11 +76,10 @@ const PetDetails = () => {
 		}
 
 		try {
-			console.log(formData);
-
-			/* 			await axios.post(`${apiUrl}/pets`, formData).then(() => {
+			await axios.post(`${apiUrl}/pets`, formData).then(() => {
+				console.log("success!");
 				navigate("/login");
-			}); */
+			});
 		} catch (err) {
 			console.log("Failed to add pet", err);
 		}
@@ -117,12 +116,14 @@ const PetDetails = () => {
 						<DropdownMenu
 							classname={errors.petType ? "dropdown__menu --error" : "input"}
 							defaultTxt={"Pet Type"}
-							option1={"Dog"}
-							option2={"Cat"}
-							option3={"Reptile"}
-							option4={"Tarantula"}
-							option5={"Bird"}
 							name="petType"
+							options={[
+								{ value: "Dog", label: "Dog" },
+								{ value: "Cat", label: "Cat" },
+								{ value: "Reptile", label: "Reptile" },
+								{ value: "Bird", label: "Bird" },
+								{ value: "Tarantula", label: "Tarantula" }
+							]}
 							onChange={handleChange}
 						/>
 						{errors.petType && (
@@ -140,11 +141,13 @@ const PetDetails = () => {
 						<DropdownMenu
 							classname={errors.size ? "dropdown__menu --error" : "input"}
 							defaultTxt={"Pet Size"}
-							option1={"Small"}
-							option2={"Medium"}
-							option3={"Large"}
-							option4={"Huge"}
 							name="size"
+							options={[
+								{ value: "Small", label: "Small" },
+								{ value: "Medium", label: "Medium" },
+								{ value: "Large", label: "Large" },
+								{ value: "Huge", label: "Huge" }
+							]}
 							onChange={handleChange}
 						/>
 						{errors.size && (
@@ -164,12 +167,14 @@ const PetDetails = () => {
 						<DropdownMenu
 							classname={errors.temperament ? "dropdown__menu --error" : "input"}
 							defaultTxt={"Temperament"}
-							option1={"Playful"}
-							option2={"Curious"}
-							option3={"Calm"}
-							option4={"Friendly"}
-							option5={"Standoff-ish"}
 							name="temperament"
+							options={[
+								{ value: "Playful", label: "Playful" },
+								{ value: "Curious", label: "Curious" },
+								{ value: "Calm", label: "Calm" },
+								{ value: "Friendly", label: "Friendly" },
+								{ value: "Standoff-ish", label: "Standoff-ish" }
+							]}
 							onChange={handleChange}
 						/>
 						{errors.temperament && (
