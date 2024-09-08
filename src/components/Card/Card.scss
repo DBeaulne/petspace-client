@@ -1,5 +1,6 @@
 /* Service Card Styling */
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .card {
 	display: flex;
@@ -26,11 +27,20 @@
 
 	&__service-title {
 		text-transform: capitalize;
+		font-size: 1.125rem;
 		font-weight: 600;
+
+		@include mQ.tablet {
+			font-size: 1.25rem;
+		}
 	}
 
 	&__service-text {
 		font-size: 1rem;
 		margin-bottom: 2rem;
+
+		@include mQ.tablet {
+			font-size: 1.125rem;
+		}
 	}
 }

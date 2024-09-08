@@ -1,6 +1,7 @@
 /* Hero styling */
 
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .hero {
 	display: flex;
@@ -41,11 +42,19 @@
 	&__title {
 		top: 30%;
 		font-size: 24px;
+
+		@include mQ.tablet {
+			font-size: 2.5rem;
+		}
 	}
 
 	&__subtitle {
 		top: 75%;
 		font-size: 16px;
+
+		@include mQ.tablet {
+			font-size: 1.5rem;
+		}
 	}
 }
 

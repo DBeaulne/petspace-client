@@ -10,10 +10,9 @@ const Assistant = () => {
 				color={"light-grey"}
 				shape={"straight"}
 				borderColor={"blue"}
-				text="Lets start with what you need..."
+				text="Click here to begin..."
 				size={"large"}
 				isLink={true}
-				margin="0 2rem"
 				to="/assistant"
 			/>
 		</section>

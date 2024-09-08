@@ -1,5 +1,6 @@
 /* AI Assistant page styling */
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .assistant {
 	display: flex;
@@ -15,8 +16,13 @@
 
 	&__img-wrapper {
 		display: flex;
+		margin: auto;
 		width: 100%;
 		padding-bottom: 1rem;
+
+		@include mQ.tablet {
+			width: 55%;
+		}
 	}
 
 	&__chat-image {

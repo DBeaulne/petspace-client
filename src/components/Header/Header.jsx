@@ -2,7 +2,6 @@
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 import logoImg from "../../assets/logo/PetSpaceLogo.png";
-import Nav from "../Nav/Nav";
 
 const Header = () => {
 	return (
@@ -17,7 +16,6 @@ const Header = () => {
 					}
 				</NavLink>
 			</div>
-			<Nav />
 		</div>
 	);
 };

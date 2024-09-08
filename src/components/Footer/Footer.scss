@@ -1,5 +1,6 @@
 /* Footer Styling */
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .footer {
 	display: flex;
@@ -14,6 +15,11 @@
 	padding-right: 1rem;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+
+	@include mQ.tablet {
+		padding-left: 5rem;
+		padding-right: 5rem;
+	}
 
 	&__locations {
 		display: flex;
@@ -33,6 +39,11 @@
 			list-style-type: disc;
 			font-size: 14px;
 			line-height: 22px;
+
+			@include mQ.tablet {
+				font-size: 1rem;
+				list-style: 24px;
+			}
 		}
 	}
 
@@ -40,6 +51,10 @@
 		width: 100%;
 		font-size: 1rem;
 		padding-bottom: 1rem;
+
+		@include mQ.tablet {
+			font-size: 1.25rem;
+		}
 	}
 
 	&__region-wrapper {
@@ -51,6 +66,16 @@
 
 	&__canada {
 		margin: auto;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+
+		@include mQ.tablet {
+			width: 10rem;
+			height: 10rem;
+		}
 	}
 
 	&__copyright {

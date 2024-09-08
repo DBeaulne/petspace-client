@@ -1,5 +1,6 @@
 /* Button Styling */
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .button-wrapper {
 	text-decoration: none;
@@ -7,54 +8,70 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	&:hover {
 		cursor: pointer;
 	}
 }
 
-.button--mint {
+.button {
 	display: flex;
-	background-color: clrs.$PetSpace-Mint;
-	color: clrs.$PetSpace-Black;
+
+	&--mint {
+		background-color: clrs.$PetSpace-Mint;
+		color: clrs.$PetSpace-Black;
+	}
+
+	&--ice {
+		background-color: clrs.$PetSpace-Ice;
+		color: clrs.$PetSpace-Black;
+	}
+
+	&--light-grey {
+		background-color: clrs.$PetSpace-LightGrey-80;
+		color: clrs.$PetSpace-Med-Grey-text;
+	}
+
+	&--round {
+		border-radius: 2rem;
+	}
+
+	&--straight {
+		border-radius: 8px;
+	}
+
+	&--large {
+		height: 3.125rem;
+		padding: 0 2rem;
+
+		@include mQ.tablet {
+			padding: 0 6rem;
+		}
+	}
+
+	&--small {
+		height: 2.5rem;
+		width: 8.5rem;
+		padding: unset;
+	}
 }
 
-.button--ice {
-	display: flex;
-	background-color: clrs.$PetSpace-Ice;
-	color: clrs.$PetSpace-Black;
-}
+.button-brdr {
+	&--blue {
+		border: 1px solid clrs.$PetSpace-Blue;
+	}
 
-.button--light-grey {
-	background-color: clrs.$PetSpace-LightGrey-80;
-	color: clrs.$PetSpace-Med-Grey-text;
-}
-
-.button-brdr--blue {
-	border: 1px solid clrs.$PetSpace-Blue;
-}
-
-.button-brdr--black {
-	border: 1px solid clrs.$PetSpace-Black;
-}
-
-.button--round {
-	border-radius: 2rem;
-}
-
-.button--straight {
-	border-radius: 8px;
-}
-
-.button--large {
-	height: 3.125rem;
-}
-
-.button--small {
-	height: 2.5rem;
-	width: 8.5rem;
+	&--black {
+		border: 1px solid clrs.$PetSpace-Black;
+	}
 }
 
 .button-text {
 	text-transform: capitalize;
 	font-weight: bold;
+	font-size: 1rem;
+
+	@include mQ.tablet {
+		font-size: 1.125rem;
+	}
 }

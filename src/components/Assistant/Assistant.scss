@@ -1,5 +1,6 @@
 /* AI Assistant styling */
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .ai-assistant {
 	display: flex;
@@ -15,5 +16,11 @@
 		padding-right: 3rem;
 		font-size: 1rem;
 		font-weight: bold;
+
+		@include mQ.tablet {
+			margin: auto;
+			width: 75%;
+			font-size: 1.325rem;
+		}
 	}
 }

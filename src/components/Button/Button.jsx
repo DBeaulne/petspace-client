@@ -15,11 +15,7 @@ const Button = ({
 	to = null,
 	onClick = null
 }) => {
-	const className = `button--${color} button--${shape} button--${size} button-brdr--${borderColor} button-wrapper`;
-
-	const buttonStyle = {
-		margin: margin === "none" ? "0" : margin || "0"
-	};
+	const className = `button button--${color} button--${shape} button--${size} button-brdr--${borderColor} button-wrapper`;
 
 	const textStyle = {
 		padding: textPadding === "none" ? "0" : textPadding || "0"
@@ -28,8 +24,7 @@ const Button = ({
 	return isLink ? (
 		<Link
 			to={to}
-			className={className}
-			style={buttonStyle}>
+			className={className}>
 			<h4
 				className="button-text"
 				style={textStyle}>
@@ -40,7 +35,6 @@ const Button = ({
 		<button
 			type={type}
 			className={className}
-			style={buttonStyle}
 			onClick={onClick}>
 			<h4
 				className="button-text"
