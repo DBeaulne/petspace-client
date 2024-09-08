@@ -4,7 +4,9 @@
 1.  `$ git clone git@github.com:DBeaulne/petspace-client.git`
 2.  `$ cd petspace-client`
 3.  `$ npm install`
-4.  Make a copy of the .env.sample file. Renane it to .env and add the variables required
+4.  Make a copy of the .env.sample file. Renane it to .env and add the variables required.
+5.  `$ npm start`
+6.  The app will load onto your default browser
 
 ## Branches
 ### Develop branch
