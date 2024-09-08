@@ -1,6 +1,7 @@
 /* Log-in Page styling */
 @use "../../styles/partials/colors" as clrs;
 @use "../../styles/partials/forms" as forms;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .registerPage {
 	display: flex;
@@ -18,6 +19,11 @@
 	&__form-group {
 		@extend .form-group;
 		flex-direction: column;
+		width: 100%;
+
+		@include mQ.tablet {
+			width: 55%;
+		}
 
 		&--dbl-col {
 			width: 45%;
@@ -34,6 +40,11 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		width: 100%;
+
+		@include mQ.tablet {
+			width: 55%;
+		}
 	}
 }
 .error {

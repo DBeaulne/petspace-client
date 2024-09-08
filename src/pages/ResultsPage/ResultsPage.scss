@@ -1,9 +1,19 @@
 /* Results page styling */
 @use "../../styles/partials/colors" as clrs;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .results-page {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	margin: auto;
 	height: auto;
+
+	@include mQ.tablet {
+		width: 50%;
+	}
+
+	@include mQ.desktop {
+		width: 30%;
+	}
 }

@@ -2,15 +2,25 @@
 
 @use "../../styles/partials/colors" as clrs;
 @use "../../styles/partials/forms" as forms;
+@use "../../styles/partials/mediaQ" as mQ;
 
 .petDetails {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin: auto;
 	width: 100%;
 	height: auto;
 	padding: 1.5rem;
 	flex: 1;
+
+	@include mQ.tablet {
+		width: 55%;
+	}
+
+	@include mQ.desktop {
+		width: 35%;
+	}
 
 	&__group-wrapper {
 		display: flex;

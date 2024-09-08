@@ -26,6 +26,14 @@
 		flex-direction: column;
 		flex-wrap: wrap;
 		width: 100%;
+
+		@include mQ.tablet {
+			width: 65%;
+		}
+
+		@include mQ.desktop {
+			width: 40%;
+		}
 	}
 
 	&__locales {
@@ -62,6 +70,13 @@
 		flex-direction: row;
 		justify-content: space-between;
 		padding-left: 0.5rem;
+
+		@include mQ.tablet {
+			padding-left: 1.5rem;
+		}
+		@include mQ.desktop {
+			padding-left: 1.5rem;
+		}
 	}
 
 	&__canada {
