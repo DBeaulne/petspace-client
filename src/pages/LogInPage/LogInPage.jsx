@@ -61,7 +61,7 @@ const LogInPage = () => {
 
 	const setRefreshTokenCookie = (refreshToken) => {
 		Cookies.set("refreshToken", refreshToken, {
-			expires: 69 // set expiration to 7 days
+			expires: 69 // set expiration to 69 days
 		});
 	};
 
@@ -70,8 +70,6 @@ const LogInPage = () => {
 		if (!validateForm()) {
 			return;
 		}
-
-		// Here send a POST request to loginUrl with username and password data
 		if (!isLoggedIn) {
 			try {
 				const response = await axios.post(`${apiUrl}/login`, formData);

@@ -1,8 +1,0 @@
-/* Chat Response styling */
-@use "../../styles/partials/colors" as clrs;
-
-.chat-response {
-	display: flex;
-	width: 100%;
-	background-color: clrs.$PetSpace-Ice;
-}
