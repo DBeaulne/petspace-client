@@ -15,7 +15,6 @@ import Footer from "./components/Footer/Footer.jsx";
 
 export const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
-
 function App() {
 	return (
 		<BrowserRouter>
