@@ -4,7 +4,7 @@
 @use "../../styles/partials/forms" as forms;
 @use "../../styles/partials/mediaQ" as mQ;
 
-.results-page {
+.searchPage {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -20,5 +20,36 @@
 
 	@include mQ.desktop {
 		width: 30%;
+	}
+
+	&__intro {
+		padding-bottom: 1rem;
+	}
+
+	&__form {
+		@extend .form;
+	}
+
+	&__form-group {
+		@extend .form-group;
+		flex-direction: column;
+
+		&--dbl-col {
+			width: 45%;
+		}
+	}
+
+	&__group-wrapper {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+
+		justify-content: space-between;
+	}
+
+	&__button-container {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		margin-top: auto;
 	}
 }

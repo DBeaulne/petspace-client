@@ -8,6 +8,7 @@ import LogInPage from "./pages/LogInPage/LogInPage.jsx";
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 import ResultsPage from './pages/ResultsPage/ResultsPage.jsx';
 import PetDetails from './pages/PetDetails/PetDetails.jsx';
+import SearchPage from "./pages/SearchPage/SearchPage.jsx";
 
 // Components
 import Header from "./components/Header/Header.jsx";
@@ -48,6 +49,10 @@ function App() {
           <Route
             path="/petDetails"
             element={<PetDetails />}
+          />
+          <Route
+            path="/search"
+            element={<SearchPage />}
           />
 				</Routes>
 			<Footer />
