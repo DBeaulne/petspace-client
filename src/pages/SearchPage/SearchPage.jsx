@@ -17,7 +17,11 @@ import { useNavigate } from "react-router-dom";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 const SearchPage = () => {
-	const [formData, setFormData] = useState({});
+	const [formData, setFormData] = useState({
+		petType: "",
+		userLat: "",
+		userLng: ""
+	});
 
 	const [errors, setErrors] = useState({});
 	const navigate = useNavigate();
@@ -52,12 +56,13 @@ const SearchPage = () => {
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
+		console.log(formData);
 		if (!validateForm()) {
 			return;
 		}
 		try {
-			await axios.post(`${apiUrl}/accounts`, formData).then(() => {
-				navigate("/petDetails");
+			const response = await axios.post(`${apiUrl}/search`, formData).then(() => {
+				console.log(response.data);
 			});
 		} catch (err) {
 			console.log("Failed to add user", err);
