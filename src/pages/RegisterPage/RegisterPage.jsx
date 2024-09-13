@@ -74,6 +74,7 @@ const RegisterPage = () => {
 		if (!validateForm()) {
 			return;
 		}
+
 		try {
 			await axios.post(`${apiUrl}/accounts`, formData).then(() => {
 				navigate("/petDetails");
