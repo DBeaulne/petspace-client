@@ -23,6 +23,11 @@ const RegisterPage = () => {
 
 	const [errors, setErrors] = useState({});
 	const navigate = useNavigate();
+	const mapBoxToken = process.env.MAPBOX_TOKEN;
+	const mapBoxAPI_URL = "https://api.mapbox.com/search/geocode/v6/forward";
+	// const mapBoxAddressString = `${address}, ${province}, ${postalCode}`;
+	//const geoCodeString = `${mapBoxAPI_URL}?q=${mapBoxAddressString}&limit=1&access_token=${mapBoxToken}`;
+	//console.log(geoCodeString);
 
 	const validateForm = () => {
 		const newErrors = {};
