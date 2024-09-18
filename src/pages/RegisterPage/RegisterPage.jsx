@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
 import { apiUrl } from "../../App";
+import { mapBoxToken } from "../../App";
 
 const RegisterPage = () => {
 	const [formData, setFormData] = useState({
@@ -23,11 +24,6 @@ const RegisterPage = () => {
 
 	const [errors, setErrors] = useState({});
 	const navigate = useNavigate();
-	const mapBoxToken = process.env.MAPBOX_TOKEN;
-	const mapBoxAPI_URL = "https://api.mapbox.com/search/geocode/v6/forward";
-	// const mapBoxAddressString = `${address}, ${province}, ${postalCode}`;
-	//const geoCodeString = `${mapBoxAPI_URL}?q=${mapBoxAddressString}&limit=1&access_token=${mapBoxToken}`;
-	//console.log(geoCodeString);
 
 	const validateForm = () => {
 		const newErrors = {};
@@ -74,15 +70,38 @@ const RegisterPage = () => {
 		});
 	};
 
+	const geoCodeAddress = async (form) => {
+		const mapBoxAPI_URL = "https://api.mapbox.com/search/geocode/v6/forward";
+		const mapBoxAddressString = `${formData.address}, ${formData.province}, ${formData.postalCode}`;
+		const geoCodeString = `${mapBoxAPI_URL}?q=${mapBoxAddressString}&limit=1&access_token=${mapBoxToken}`;
+		console.log(geoCodeString);
+		const response = await axios.get(geoCodeString);
+		console.log(response.data.features[0].properties.coordinates);
+		const geoCodeData = {
+			email: form.email,
+			lat: response.data.features[0].properties.coordinates.latitude,
+			lng: response.data.features[0].properties.coordinates.longitude
+		};
+		console.log(geoCodeData);
+		await axios.put(`${apiUrl}/users`, geoCodeData);
+	};
+
 	const handleRegister = async (e) => {
 		e.preventDefault();
+
 		if (!validateForm()) {
 			return;
 		}
+
 		try {
-			await axios.post(`${apiUrl}/accounts`, formData).then(() => {
-				navigate("/petDetails");
-			});
+			await axios
+				.post(`${apiUrl}/accounts`, formData)
+				.then(() => {
+					geoCodeAddress(formData);
+				})
+				.then(() => {
+					navigate("/petDetails");
+				});
 		} catch (err) {
 			console.log("Failed to add user", err);
 		}
