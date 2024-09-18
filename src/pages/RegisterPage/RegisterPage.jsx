@@ -72,17 +72,14 @@ const RegisterPage = () => {
 
 	const geoCodeAddress = async (form) => {
 		const mapBoxAPI_URL = "https://api.mapbox.com/search/geocode/v6/forward";
-		const mapBoxAddressString = `${formData.address}, ${formData.province}, ${formData.postalCode}`;
+		const mapBoxAddressString = `${form.address}, ${form.province}, ${form.postalCode}`;
 		const geoCodeString = `${mapBoxAPI_URL}?q=${mapBoxAddressString}&limit=1&access_token=${mapBoxToken}`;
-		console.log(geoCodeString);
 		const response = await axios.get(geoCodeString);
-		console.log(response.data.features[0].properties.coordinates);
 		const geoCodeData = {
 			email: form.email,
 			lat: response.data.features[0].properties.coordinates.latitude,
 			lng: response.data.features[0].properties.coordinates.longitude
 		};
-		console.log(geoCodeData);
 		await axios.put(`${apiUrl}/users`, geoCodeData);
 	};
 
