@@ -78,7 +78,7 @@ const LogInPage = () => {
 				setErrorMessage("");
 				sessionStorage.setItem("token", response.data.accessToken);
 				setRefreshTokenCookie(response.data.refreshToken);
-				navigate("/results");
+				navigate("/search");
 			} catch (err) {
 				console.error("error: ", err);
 				setIsLoginError(true);

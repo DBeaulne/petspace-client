@@ -14,6 +14,7 @@ import SearchPage from "./pages/SearchPage/SearchPage.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 
+export const mapBoxToken = process.env.REACT_APP_MAPBOX_TOKEN;
 export const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
 
