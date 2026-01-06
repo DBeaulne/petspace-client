@@ -77,6 +77,7 @@ const PetDetails = () => {
 
 		try {
 			await axios.post(`${apiUrl}/pets`, formData).then(() => {
+				console.log("success!");
 				navigate("/login");
 			});
 		} catch (err) {
