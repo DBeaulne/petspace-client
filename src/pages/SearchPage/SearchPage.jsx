@@ -9,22 +9,20 @@
 import "./SearchPage.scss";
 import axios from "axios";
 import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
+// import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
 import { apiUrl } from "../../App";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 const SearchPage = () => {
 	const [formData, setFormData] = useState({
-		petType: "",
-		userLat: "",
-		userLng: ""
+		petType: ""
 	});
 
 	const [errors, setErrors] = useState({});
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const validateForm = () => {
 		const newErrors = {};
@@ -56,16 +54,16 @@ const SearchPage = () => {
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
-		console.log(formData);
 		if (!validateForm()) {
 			return;
 		}
 		try {
-			const response = await axios.post(`${apiUrl}/search`, formData).then(() => {
+			console.log(formData);
+			const response = await axios.post(`${apiUrl}/sitters/search`, formData).then(() => {
 				console.log(response.data);
 			});
 		} catch (err) {
-			console.log("Failed to add user", err);
+			console.log("Failed to find sitters", err);
 		}
 	};
 
