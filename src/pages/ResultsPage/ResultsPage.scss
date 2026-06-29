@@ -15,10 +15,10 @@
 	flex: 1;
 
 	@include mQ.tablet {
-		width: 50%;
+		width: 80%;
 	}
 
 	@include mQ.desktop {
-		width: 30%;
+		width: 70%;
 	}
 }

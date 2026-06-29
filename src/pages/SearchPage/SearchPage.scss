@@ -15,19 +15,39 @@
 	flex: 1;
 
 	@include mQ.tablet {
-		width: 50%;
+		width: 80%;
 	}
 
 	@include mQ.desktop {
-		width: 30%;
+		width: 56rem;
 	}
 
 	&__intro {
 		padding-bottom: 1rem;
 	}
 
+	&__assistant {
+		display: grid;
+		gap: 0.75rem;
+		width: 100%;
+		margin-bottom: 2rem;
+
+		textarea {
+			min-height: 8rem;
+			padding: 1rem;
+			border: 1px solid #cfd8d3;
+			border-radius: 0.5rem;
+			resize: vertical;
+		}
+	}
+
+	&__assistant-reply {
+		color: #295f4e;
+	}
+
 	&__form {
 		@extend .form;
+		width: 100%;
 	}
 
 	&__form-group {
@@ -43,7 +63,7 @@
 		display: flex;
 		flex-direction: row;
 		width: 100%;
-
+		gap: 1rem;
 		justify-content: space-between;
 	}
 

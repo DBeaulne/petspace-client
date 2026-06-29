@@ -2,12 +2,11 @@
 import "./LogInPage.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
-import { apiUrl } from "../../App";
 import Cookies from "js-cookie";
+import { api } from "../../utils/api";
 
 const LogInPage = () => {
 	const [formData, setFormData] = useState({
@@ -72,17 +71,18 @@ const LogInPage = () => {
 		}
 		if (!isLoggedIn) {
 			try {
-				const response = await axios.post(`${apiUrl}/login`, formData);
+				const response = await api.post("/auth/login", formData);
 				setIsLoggedIn(true);
 				setIsLoginError(false);
 				setErrorMessage("");
 				sessionStorage.setItem("token", response.data.accessToken);
+				sessionStorage.setItem("user", JSON.stringify(response.data.user));
 				setRefreshTokenCookie(response.data.refreshToken);
-				navigate("/search");
+				navigate(response.data.user.roles.includes("admin") ? "/admin" : "/search");
 			} catch (err) {
 				console.error("error: ", err);
 				setIsLoginError(true);
-				setErrorMessage(err.message);
+				setErrorMessage(err.response?.data?.message || err.message);
 			}
 		}
 	};

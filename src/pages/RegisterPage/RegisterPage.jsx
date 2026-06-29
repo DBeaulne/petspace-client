@@ -2,12 +2,11 @@
 import "./RegisterPage.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
-import { apiUrl } from "../../App";
-import { mapBoxToken } from "../../App";
+import { mapBoxToken } from "../../config/env";
+import { api } from "../../utils/api";
 
 const RegisterPage = () => {
 	const [formData, setFormData] = useState({
@@ -71,16 +70,26 @@ const RegisterPage = () => {
 	};
 
 	const geoCodeAddress = async (form) => {
+		if (!mapBoxToken) {
+			return {};
+		}
 		const mapBoxAPI_URL = "https://api.mapbox.com/search/geocode/v6/forward";
 		const mapBoxAddressString = `${form.address}, ${form.province}, ${form.postalCode}`;
 		const geoCodeString = `${mapBoxAPI_URL}?q=${mapBoxAddressString}&limit=1&access_token=${mapBoxToken}`;
-		const response = await axios.get(geoCodeString);
+		const response = await fetch(geoCodeString);
+		const data = await response.json();
+		const coordinates = data.features?.[0]?.properties?.coordinates;
+
+		if (!coordinates) {
+			return {};
+		}
+
 		const geoCodeData = {
 			email: form.email,
-			lat: response.data.features[0].properties.coordinates.latitude,
-			lng: response.data.features[0].properties.coordinates.longitude
+			lat: coordinates.latitude,
+			lng: coordinates.longitude
 		};
-		await axios.put(`${apiUrl}/users`, geoCodeData);
+		return geoCodeData;
 	};
 
 	const handleRegister = async (e) => {
@@ -91,14 +100,16 @@ const RegisterPage = () => {
 		}
 
 		try {
-			await axios
-				.post(`${apiUrl}/accounts`, formData)
-				.then(() => {
-					geoCodeAddress(formData);
-				})
-				.then(() => {
-					navigate("/petDetails");
-				});
+			let geoCodeData = {};
+			try {
+				geoCodeData = await geoCodeAddress(formData);
+			} catch {
+				geoCodeData = {};
+			}
+			const response = await api.post("/auth/register", { ...formData, ...geoCodeData });
+			sessionStorage.setItem("token", response.data.accessToken);
+			sessionStorage.setItem("user", JSON.stringify(response.data.user));
+			navigate("/petDetails");
 		} catch (err) {
 			console.log("Failed to add user", err);
 		}

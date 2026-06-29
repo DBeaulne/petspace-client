@@ -1,8 +1,6 @@
 /** Dropdown Menu component */
 import "./DropdownMenu.scss";
 
-import "./DropdownMenu.scss";
-
 const Dropdown = ({
 	classname = "", // Default to empty string if not provided
 	focus = "",
@@ -10,6 +8,7 @@ const Dropdown = ({
 	defaultTxt = "Select", // Default placeholder text
 	options = [],
 	name = "",
+	value = "",
 	onChange = () => {} // Default to an empty function if not provided
 }) => {
 	const dropdownOptions = [
@@ -22,6 +21,7 @@ const Dropdown = ({
 			<select
 				className={`dropdown__menu ${classname} ${focus} ${error}`}
 				name={name}
+				value={value || defaultTxt}
 				onChange={onChange}>
 				{dropdownOptions.map((option, index) => (
 					<option

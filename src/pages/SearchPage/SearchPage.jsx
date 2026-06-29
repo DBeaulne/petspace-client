@@ -1,84 +1,126 @@
-/** Search Page
- * After logging in the user will enter
- * search criteria to find a sitter.
- *
- * The search result will then create
- * a page with a map and the resutls
- */
-
 import "./SearchPage.scss";
-import axios from "axios";
 import Button from "../../components/Button/Button";
-// import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
-import { apiUrl } from "../../App";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+import Input from "../../components/Input/Input";
+import { api } from "../../utils/api";
+
+const initialCriteria = {
+	petType: "",
+	petSize: "",
+	city: "",
+	postalCode: "",
+	startDateTime: "",
+	endDateTime: ""
+};
 
 const SearchPage = () => {
-	const [formData, setFormData] = useState({
-		petType: ""
-	});
-
+	const [criteria, setCriteria] = useState(initialCriteria);
+	const [assistantMessage, setAssistantMessage] = useState("");
+	const [assistantReply, setAssistantReply] = useState("");
 	const [errors, setErrors] = useState({});
-	// const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
 
 	const validateForm = () => {
 		const newErrors = {};
 
-		Object.keys(formData).forEach((key) => {
-			if (!formData[key]) {
+		["petType", "petSize"].forEach((key) => {
+			if (!criteria[key] || criteria[key].includes("Pet ")) {
 				newErrors[key] = "This field is required.";
 			}
 		});
+
+		if (!criteria.city && !criteria.postalCode) {
+			newErrors.location = "City or postal code is required.";
+		}
+
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
 	};
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormData((prev) => {
-			const updatedFormData = { ...prev, [name]: value };
-
-			if (errors[name]) {
-				setErrors((prev) => {
-					const updatedErrors = { ...prev };
-					delete updatedErrors[name];
-					return updatedErrors;
-				});
-			}
-			return updatedFormData;
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+		setCriteria((prev) => ({ ...prev, [name]: value }));
+		setErrors((prev) => {
+			const next = { ...prev };
+			delete next[name];
+			delete next.location;
+			return next;
 		});
 	};
 
-	const handleSearch = async (e) => {
-		e.preventDefault();
+	const goToResults = (payload) => {
+		navigate("/results", { state: payload });
+	};
+
+	const handleAssistantSearch = async (event) => {
+		event.preventDefault();
+		setIsLoading(true);
+		setAssistantReply("");
+
+		try {
+			const response = await api.post("/assistant/search", {
+				message: assistantMessage,
+				criteria
+			});
+			setAssistantReply(response.data.reply);
+			setCriteria((prev) => ({ ...prev, ...response.data.criteria }));
+
+			if (response.data.sitters?.length) {
+				goToResults(response.data);
+			}
+		} catch (err) {
+			setAssistantReply(err.response?.data?.message || "The assistant is unavailable. Use the search form below.");
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+	const handleSearch = async (event) => {
+		event.preventDefault();
+
 		if (!validateForm()) {
 			return;
 		}
+
+		setIsLoading(true);
+
 		try {
-			console.log(formData);
-			const response = await axios.post(`${apiUrl}/sitters/search`, formData).then(() => {
-				console.log(response.data);
-			});
+			const response = await api.post("/search/sitters", criteria);
+			goToResults({ ...response.data, criteria });
 		} catch (err) {
-			console.log("Failed to find sitters", err);
+			setErrors({ api: err.response?.data?.message || "Failed to find sitters." });
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
 	return (
 		<section className="searchPage">
-			<h4 className="searchPage__intro">What type and size of pet do you need care for?</h4>
-			<form
-				className="searchPage__form"
-				onSubmit={handleSearch}>
+			<h2 className="searchPage__intro">Find a Durham Region sitter</h2>
+			<form className="searchPage__assistant" onSubmit={handleAssistantSearch}>
+				<label htmlFor="assistantMessage">Tell PetSpace what you need</label>
+				<textarea
+					id="assistantMessage"
+					name="assistantMessage"
+					value={assistantMessage}
+					onChange={(event) => setAssistantMessage(event.target.value)}
+					placeholder="Example: I need care for my large dog in Whitby this Friday evening."
+				/>
+				<Button color="mint" shape="round" borderColor="black" text={isLoading ? "searching" : "ask assistant"} size="small" margin="0" isLink={false} type="submit" />
+				{assistantReply && <p className="searchPage__assistant-reply">{assistantReply}</p>}
+			</form>
+			<form className="searchPage__form" onSubmit={handleSearch}>
 				<div className="searchPage__group-wrapper">
 					<div className="searchPage__form-group searchPage__form-group--dbl-col">
 						<DropdownMenu
 							classname={errors.petType ? "dropdown__menu --error" : "input"}
 							defaultTxt={"Pet Type"}
 							name="petType"
+							value={criteria.petType}
 							options={[
 								{ value: "Dog", label: "Dog" },
 								{ value: "Cat", label: "Cat" },
@@ -90,11 +132,7 @@ const SearchPage = () => {
 						/>
 						{errors.petType && (
 							<div className="error">
-								<img
-									className="error__icon"
-									src={errorIcon}
-									alt="error-icon"
-								/>
+								<img className="error__icon" src={errorIcon} alt="error-icon" />
 								<p className="error__txt">{errors.petType}</p>
 							</div>
 						)}
@@ -104,6 +142,7 @@ const SearchPage = () => {
 							classname={errors.petSize ? "dropdown__menu --error" : "input"}
 							defaultTxt={"Pet Size"}
 							name="petSize"
+							value={criteria.petSize}
 							options={[
 								{ value: "Small", label: "Small" },
 								{ value: "Medium", label: "Medium" },
@@ -114,31 +153,28 @@ const SearchPage = () => {
 						/>
 						{errors.petSize && (
 							<div className="error">
-								<img
-									className="error__icon"
-									src={errorIcon}
-									alt="error-icon"
-								/>
+								<img className="error__icon" src={errorIcon} alt="error-icon" />
 								<p className="error__txt">{errors.petSize}</p>
 							</div>
 						)}
 					</div>
 				</div>
+				<div className="searchPage__group-wrapper">
+					<Input classname="input" placeholder="City" name="city" value={criteria.city} onChange={handleChange} type="text" />
+					<Input classname="input" placeholder="Postal code" name="postalCode" value={criteria.postalCode} onChange={handleChange} type="text" />
+				</div>
+				<div className="searchPage__group-wrapper">
+					<Input classname="input" placeholder="Start date/time" name="startDateTime" value={criteria.startDateTime} onChange={handleChange} type="datetime-local" />
+					<Input classname="input" placeholder="End date/time" name="endDateTime" value={criteria.endDateTime} onChange={handleChange} type="datetime-local" />
+				</div>
+				{errors.location && <p className="error__txt">{errors.location}</p>}
+				{errors.api && <p className="error__txt">{errors.api}</p>}
 				<div className="searchPage__button-container">
-					<Button
-						color={"ice"}
-						shape={"round"}
-						borderColor={"black"}
-						text="search"
-						size={"small"}
-						margin="0"
-						isLink={false}
-						type="submit"
-						onClick={handleSearch}
-					/>
+					<Button color="ice" shape="round" borderColor="black" text={isLoading ? "searching" : "search"} size="small" margin="0" isLink={false} type="submit" />
 				</div>
 			</form>
 		</section>
 	);
 };
+
 export default SearchPage;

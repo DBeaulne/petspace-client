@@ -5,14 +5,13 @@
  */
 
 import "./PetDetails.scss";
-import axios from "axios";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import errorIcon from "../../assets/icons/error-24px.svg";
-import { apiUrl } from "../../App";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+import { api } from "../../utils/api";
 
 const PetDetails = () => {
 	const [formData, setFormData] = useState({
@@ -76,9 +75,9 @@ const PetDetails = () => {
 		}
 
 		try {
-			await axios.post(`${apiUrl}/pets`, formData).then(() => {
+			await api.post("/pets", formData).then(() => {
 				console.log("success!");
-				navigate("/login");
+				navigate("/search");
 			});
 		} catch (err) {
 			console.log("Failed to add pet", err);
